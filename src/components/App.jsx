@@ -1,16 +1,27 @@
 import React from "react";
+
+import * as API from "../services/api";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { ImageGalleryItem } from "./ImageGalleryItem/ImageGalleryItem";
-
 import { SearchBar } from "./Searchbar/Searchbar";
 
 export class App extends React.Component {
   state = {
     searchText: '',
+    images: '',
+    status: 'idle', //pending, resolved, rejected
   }
 
-  onSearch = (text) => { 
-    this.setState({searchText: text})
+  onSearch = async (text) => { 
+    try {
+      this.setState({ searchText: text, status: 'pending' });
+      const image = await API.getImage(text);
+      this.setState({ images: image.hits });
+      this.setState({ status: 'resolved' })
+      console.log(this.state.images)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() { 
@@ -26,9 +37,10 @@ export class App extends React.Component {
         }}
       >
         <SearchBar onSubmit={this.onSearch} />
-        <ImageGallery>
-          <ImageGalleryItem/>
-        </ImageGallery>
+        {this.state.images &&
+          <ImageGallery>
+            <ImageGalleryItem images={this.state.images} />
+          </ImageGallery>}
       </div>
     )
   };
