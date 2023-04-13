@@ -2,7 +2,6 @@ import React from "react";
 
 import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { SearchBar } from "./Searchbar/Searchbar";
-import { Button } from "./Button/Button";
 
 export class App extends React.Component {
   state = {
@@ -26,9 +25,7 @@ export class App extends React.Component {
         }}
       >
         <SearchBar onSubmit={this.onSubmit} />
-        <ImageGallery searchText={this.state.searchText}>
-          {/* <ImageGalleryItem  /> */}
-        </ImageGallery>
+        <ImageGallery searchText={this.state.searchText}/>
       </div>
     )
   };
