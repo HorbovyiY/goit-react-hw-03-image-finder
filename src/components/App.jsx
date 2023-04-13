@@ -3,7 +3,7 @@ import React from "react";
 // import * as API from "../services/api";
 // import { ImageGallery } from "./ImageGallery/ImageGallery";
 // import { ImageGalleryItem } from "./ImageGalleryItem/ImageGalleryItem";
-// import { SearchBar } from "./Searchbar/Searchbar";
+import { SearchBar } from "./Searchbar/Searchbar";
 // import { Button } from "./Button/Button";
 
 export class App extends React.Component {
@@ -12,6 +12,10 @@ export class App extends React.Component {
     images: {},
     page: 1,
     status: 'idle', //pending, resolved, rejected
+  }
+
+  onSubmit = (text) => { 
+    this.setState({searchText: text})
   }
 
   render() { 
@@ -26,6 +30,7 @@ export class App extends React.Component {
           color: '#010101'
         }}
       >
+        <SearchBar onSubmit={ this.onSubmit} />
       </div>
     )
   };
