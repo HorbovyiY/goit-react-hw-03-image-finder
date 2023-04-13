@@ -3,6 +3,9 @@ import React from "react";
 import * as API from "../../services/api";
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem";
 import { Button } from "components/Button/Button";
+import { Loader } from "components/Loader/Loader";
+
+import { Gallery } from "./ImageGallery.styled";
 
 export class ImageGallery extends React.Component { 
     state = {
@@ -43,15 +46,13 @@ export class ImageGallery extends React.Component {
     }
 
     render() { 
-
-        
-
         return (
             <div>
-                <ul class="gallery">
+                <Gallery>
                     <ImageGalleryItem images={this.state.images} />
-                </ul>
-                <Button add={ this.addPage} />
+                </Gallery>
+                <Button add={this.addPage} />
+                <Loader/>
             </div>
         )
     }
