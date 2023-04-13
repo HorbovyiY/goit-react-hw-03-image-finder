@@ -1,17 +1,12 @@
 import React from "react";
 
-// import * as API from "../services/api";
-// import { ImageGallery } from "./ImageGallery/ImageGallery";
-// import { ImageGalleryItem } from "./ImageGalleryItem/ImageGalleryItem";
+import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { SearchBar } from "./Searchbar/Searchbar";
-// import { Button } from "./Button/Button";
+import { Button } from "./Button/Button";
 
 export class App extends React.Component {
   state = {
     searchText: '',
-    images: {},
-    page: 1,
-    status: 'idle', //pending, resolved, rejected
   }
 
   onSubmit = (text) => { 
@@ -30,7 +25,10 @@ export class App extends React.Component {
           color: '#010101'
         }}
       >
-        <SearchBar onSubmit={ this.onSubmit} />
+        <SearchBar onSubmit={this.onSubmit} />
+        <ImageGallery searchText={this.state.searchText}>
+          {/* <ImageGalleryItem  /> */}
+        </ImageGallery>
       </div>
     )
   };
