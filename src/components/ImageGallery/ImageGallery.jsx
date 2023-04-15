@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 import * as API from "../../services/api";
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem";
@@ -75,4 +76,8 @@ export class ImageGallery extends React.Component {
             </div>
         )
     }
+}
+
+ImageGallery.propTypes = {
+    searchText: PropTypes.string.isRequired
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 import { Overlay, ModalWindow } from "./Modal.styled";
 
@@ -36,4 +37,10 @@ export class Modal extends React.Component {
             </Overlay>
         )
     }
+}
+
+Modal.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.object).isRequired,
+    closeModal: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired
 }
