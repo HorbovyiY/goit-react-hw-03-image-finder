@@ -31,7 +31,6 @@ export class SearchBar extends React.Component {
                 </Button>
 
                 <FormInput
-                    class="input"   
                     type="text"
                     autoComplete="off"
                     autoFocus

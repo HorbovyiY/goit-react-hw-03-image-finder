@@ -28,7 +28,6 @@ export class Modal extends React.Component {
         return (
             <Overlay onClick={this.handleOverlayClick}>
                 <ModalWindow>
-                    
                     <img
                         src={this.props.images.find(img => img.id === this.props.id).largeImageURL}
                         alt={this.props.images.find(img => img.id === this.props.id).tags}
